@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="container d-flex">
+    <div class="text-center" *ngFor="let x of cat">
+        <a [routerLink]="x.path">
+            <img src="assets/flipkart/{{x.img}}.jpg" class="mobiles">
+        </a>
+        <p>{{x.name}}</p>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Angular</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ms-auto">
+        <ng-container  *ngFor="let x of header">
+        <li class="nav-item" *ngIf="x.sub.length===0">
+          <a class="nav-link" [routerLink]="x.path" routerLinkActive="active">{{x.name}}</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="x.sub.length>0">
+          <a class="nav-link dropdown-toggle" [routerLink]="x.path" role="button" data-bs-toggle="dropdown">{{x.name}}</a>
+          <ul class="dropdown-menu">
+            <li *ngFor="let y of x.sub">
+              <a class="dropdown-item" [routerLink]="y.path">{{y.name}}</a>
+            </li>
+            <!-- <li><a class="dropdown-item" href="#">Electronics</a></li>
+            <li><a class="dropdown-item" href="#">Fashion</a></li> -->
+          </ul>
+        </li>
+        </ng-container>
+        <li>
+          <a class="dropdown-item" routerLink="/Cart" style="color:white;line-height:normal;">Cart<span style="color:yellow;background-color: blue;">{{cdet.length}}</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

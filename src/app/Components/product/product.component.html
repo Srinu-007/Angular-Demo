@@ -1,0 +1,14 @@
+
+<div class="row mt-2 mb-2">
+   <ng-container *ngFor="let product of products">
+    <div class="col-12 col-md-4">
+        <h1 class="text-center">{{product.d_name | uppercase}}</h1>
+        <img [src]="filepath+product.d_img" alt="" class="image">
+        <p class="text-center para">{{product.d_desc}}</p>
+        <div class="text-center">
+            <a routerLink="/filter/kitchen/{{product.d_id}}"><button class="btn btn-primary mb-2">Read More</button></a>
+        </div>
+        </div>
+</ng-container>
+</div>
+

@@ -1,0 +1,80 @@
+<app-adminheader></app-adminheader>
+<div class="container">
+    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#myModal">
+        Add
+    </button>
+     <p [ngClass]="clr">{{dltmsg}}</p>
+     <table class="table table-dark table-bordered text-center mt-2 mx-auto">
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let x of d,let i = index">
+            <td>{{i+1}}</td>
+            <td>{{x.d_id}}</td>
+            <td>{{x.d_name}}</td>
+            <td>{{x.d_desc}}</td>
+            <td><img [src]="filepath+x.d_img" alt="" style="height:100px;width:100px"></td>
+            <td>
+                <button class="btn btn-danger" (click)="delproduct(x.d_id)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+
+
+</div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="/action_page.php">
+                <div class="mb-3 mt-3">
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" class="form-control" id="name" [(ngModel)]="pdetails.p_name" name="name">
+                </div>
+                <div class="mb-3">
+                  <label for="desc" class="form-label">Description</label>
+                  <textarea class="form-control" id="desc" placeholder="Enter password" [(ngModel)]="pdetails.p_desc" name="desc" cols="5" rows="5"></textarea>
+                </div>
+                <label for="img">Image : </label>
+                <br>
+                <input type="file" id="img" [(ngModel)]="pdetails.p_img" (change)="uploadimg($event)" class="form-control-file border" name="img">
+                <br>
+                <button type="submit" class="btn btn-primary mt-2" (click)="add()">Add</button>
+                <p>{{msg}}</p>
+              </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,19 @@
+.img{
+    height:400px;
+    background-color:darkcyan;
+}
+.section{
+    display:flex;
+    flex-direction:row;
+    text-align: center;
+    padding:10px;
+    background-color:darkcyan;
+    color:white;
+    border-radius:5px;
+}
+.sectiondesc{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
+}

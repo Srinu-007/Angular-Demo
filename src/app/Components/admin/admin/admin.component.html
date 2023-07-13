@@ -1,0 +1,17 @@
+
+<form id="form" class="form-group card p-2 w-50 mx-auto mt-5"  #form="ngForm">
+    <div class="mt-2">
+        <label>Email</label>
+        <input type="email" class="form-control" required [(ngModel)]="logdetails.email" name="email" placeholder="Enter Email" #email="ngModel">
+    </div>
+    <p class="text-danger" *ngIf="email.touched&&email.invalid">Please Enter Email</p>
+    <div class="mt-2">
+        <label>Password</label>
+        <input type="password" class="form-control" required [(ngModel)]="logdetails.pwd" name="pwd" placeholder="Enter Password" #pwd="ngModel">
+    </div>
+    <p class="text-danger" *ngIf="pwd.touched&&pwd.invalid">Please Enter password</p>
+    <div class="mt-2">
+        <button class="btn btn-primary" (click)="login()" [disabled]="form.invalid">Submit</button>
+    </div>
+    <p [ngClass]="clr">{{msg}}</p>
+</form>

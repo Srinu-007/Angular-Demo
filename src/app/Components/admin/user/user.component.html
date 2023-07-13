@@ -1,0 +1,85 @@
+<app-adminheader></app-adminheader>
+<div class="container">
+    <h1 class="green text-center">User Details</h1>
+    <p>{{msg}}</p>
+  <table class="table table-bordered table-dark bg-dark text-white text-center mt-2 mx-auto w-75">
+     <thead>
+        <tr>
+            <th>S.no</th>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>MobileNumber</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr *ngFor="let x of d,let i = index">
+            <td>{{i+1}}</td>
+            <td>{{x.user_id}}</td>
+            <td>{{x.user_fname}}</td>
+            <td>{{x.user_lname}}</td>
+            <td>{{x.user_email}}</td>
+            <td>{{x.user_phone}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="del(x.user_id) ">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="edit(x.user_id)" data-bs-toggle="modal" data-bs-target="#myModal">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+            </td>
+        </tr>
+     </tbody>
+  </table>
+</div>
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Update</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="/action_page.php">
+                <div class="mb-3 mt-3">
+                  <label for="ID" class="form-label">ID</label>
+                  <input type="number" class="form-control" id="ID" [(ngModel)]="updtdet.u_id" name="ID" disabled>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="fname" class="form-label">User Fname</label>
+                    <input type="text" class="form-control" id="fname" [(ngModel)]="updtdet.u_fname" name="fname">
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <label for="lname" class="form-label">User lname</label>
+                    <input type="text" class="form-control" id="lname" [(ngModel)]="updtdet.u_lname" name="lname">
+                  </div>
+                  <div class="mb-3 mt-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" [(ngModel)]="updtdet.u_email" name="email">
+                  </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input type="number" class="form-control" id="phone" [(ngModel)]="updtdet.u_phn" name="phone">
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="update()">Update</button>
+                 <p [ngClass]="clr">{{updatemsg}}</p>  
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

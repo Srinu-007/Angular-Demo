@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="section mt-2 mb-2">
+            <div><img [src]="filepath+product[0].d_img" alt="Samsung" class="img"></div>
+            <div class="sectiondesc">
+                <h3>{{product[0].d_name}}</h3>
+                <p>
+                    {{product[0].d_desc}}
+                </p>
+                    <div><button class="btn btn-primary" (click)="addtocart(product[0])" >Add To Cart</button></div>
+            </div>
+        </div>
+        </div>
+</div>
+<app-footer></app-footer>

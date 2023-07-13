@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container">
+    <h1 style="color:blue;font-style:italic" class="text-center">Login Here...</h1>
+    <form id="form" class="form-group card p-2 w-50 mx-auto mb-2 mt-2"  #form="ngForm">
+        <div class="mt-2">
+            <label>Email</label>
+            <input type="email" class="form-control" required [(ngModel)]="logdetails.email" name="email" placeholder="Enter Email" #email="ngModel">
+        </div>
+        <p class="text-danger" *ngIf="email.touched&&email.invalid">Please Enter Email</p>
+        <div class="mt-2">
+            <label>Password</label>
+            <input type="password" class="form-control" required [(ngModel)]="logdetails.pwd" name="pwd" placeholder="Enter Password" #pwd="ngModel">
+        </div>
+        <p class="text-danger" *ngIf="pwd.touched&&pwd.invalid">Please Enter password</p>
+        <div class="mt-2">
+            <button class="btn btn-primary" (click)="login()" [disabled]="form.invalid">Submit</button>
+        </div>
+        <p [ngClass]="clr">{{msg}}</p>
+        <div class="text-center">
+            <p>Don't have an account?<a routerLink="/Login">Signup here</a></p>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
